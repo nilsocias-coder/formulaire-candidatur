@@ -261,6 +261,15 @@
             </select>
           </div>
         </div>
+        <div class="form-row single">
+          <div class="form-group">
+            <label>Zona de Suiza de preferencia <span class="required">*</span></label>
+            <div class="radio-group" style="margin-top:8px;">
+              <div class="radio-option"><input type="radio" id="zona_francofona" name="00_zona_suiza_preferencia" value="Zona francófona"><label for="zona_francofona">Zona francófona</label></div>
+              <div class="radio-option"><input type="radio" id="zona_alemana" name="00_zona_suiza_preferencia" value="Zona germanófona"><label for="zona_alemana">Zona germanófona</label></div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -981,6 +990,12 @@ function updateProgress(){
   document.getElementById('progressBar').style.width=Math.min(100,Math.round((filled/Math.max(inputs.length,1))*100))+'%';
 }
 document.getElementById('mainForm').addEventListener('input',updateProgress);
+
+document.getElementById('mainForm').addEventListener('keydown', function(e){
+  if(e.key === 'Enter' && e.target.tagName !== 'TEXTAREA'){
+    e.preventDefault();
+  }
+});
 
 document.getElementById('especialidadSelect').addEventListener('change',function(){
   document.getElementById('otra_especialidad_row').style.display=this.value==='Otra especialidad'?'grid':'none';
